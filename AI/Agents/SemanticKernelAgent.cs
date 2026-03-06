@@ -38,4 +38,10 @@ public class SemanticKernelAgent : IAIAgent
             return $"Error: {ex.Message}";
         }
     }
+
+    public async Task<string> AskWithContextAsync(string question, string sessionId, CancellationToken cancellationToken = default)
+    {
+        _logger.LogInformation("Processing question with context. SessionId: {SessionId}", sessionId);
+        return await AskAsync(question, cancellationToken);
+    }
 }
